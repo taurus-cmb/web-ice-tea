@@ -1,0 +1,5 @@
+ - footer with contact information
+ - Update content
+   - For science and instrument add some real text
+   - Add pictures!
+ - 

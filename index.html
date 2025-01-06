@@ -1,0 +1,142 @@
+---
+layout: default
+---
+
+<nav>
+    <a href="/" class="navbar-logo">
+        <img src="/assets/images/taurus_bull_alpha.png" alt="Logo">
+    </a>
+    
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul>
+        
+        <li data-link="science" onclick="do_nav(this)">Science</li>
+        <li data-link="instrument" onclick="do_nav(this)">Instrument</li>
+        <li data-link="publications" onclick="do_nav(this)">Publications</li>
+        <li data-link="people" onclick="do_nav(this)">People</li>
+        <li data-link="updates" onclick="do_nav(this)">Updates</li>
+        <!-- Add more sections as needed -->
+    </ul>
+</nav>
+
+<div class="splash-container">
+    <img src="/assets/images/cryostat.png" alt="Splash Image" class="splash-image">
+    <div class="splash-overlay">
+        <h1 class="splash-title">Taurus</h1>
+        <h2 class="splash-subtitle">A balloon-born Cosmic microwave background telescope for measuring tau</h2>
+        <a onclick="do_nav(document.querySelector('[data-link=\'science\']'))" class="scroll-down-arrow">╲╱</a>
+    </div>
+</div>
+
+{% assign science = site.pages | where: "path", "science.md" | first %}
+<section id="science-section" data-section="science">
+    <h2>Science Goals</h2>
+    {{ science.content }}
+</section>
+
+{% assign instrument = site.pages | where: "path", "instrument.md" | first %}
+<section id="section2" data-section="instrument">
+    <h2>Instrument Description</h2>
+    {{ instrument.content }}
+</section>
+
+<section id="section3" data-section="publications">
+    <h2>Publications</h2>
+    {% assign sorted_pubs = site.publications | sort: "date" | reverse %}
+    <div class="publications-list">
+        {% for pub in sorted_pubs limit:3 %}
+            <div class="publication-item">
+                <p>{{ pub.content }}</p>
+                {% if pub.arxiv %}
+                    <a href="{{ pub.arxiv }}" target="_blank" class="arxiv-link">arXiv</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if sorted_pubs.size > 3 %}
+        <div class="show-more-container">
+            <button id="show-more-pubs" onclick="togglePublications()">Show More</button>
+        </div>
+        
+        <div class="publications-list hidden" id="more-publications">
+            {% for pub in sorted_pubs offset:3 %}
+                <div class="publication-item">
+                    <p>{{ pub.content }}</p>
+                    {% if pub.arxiv %}
+                        <a href="{{ pub.arxiv }}" target="_blank" class="arxiv-link">arXiv</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</section>
+
+<section id="section4" data-section="people">
+    <h2>Collaborators</h2>
+    <div class="people-list">
+        {% for person in site.people %}
+            <div class="person-item collapsed">
+                <div class="person-preview">
+                    {% if person.picture %}
+                        <img src="/assets/images/people/{{ person.picture }}" alt="{{ person.name }}" class="person-photo">
+                    {% endif %}
+                    <h3>{{ person.name }}</h3>
+                    <button class="expand-button" onclick="togglePersonDetails(this)">Show More</button>
+                </div>
+                <div class="person-details">
+                    <button class="close-button" onclick="togglePersonDetails(this)">&times;</button>
+                    <img src="/assets/images/people/{{ person.picture }}" alt="{{ person.name }}" class="person-photo-large">
+                    <div class="person-info">
+                        <h3>{{ person.name }}</h3>
+                        <p class="institution">{{ person.institution }}</p>
+                        {% if person.email %}
+                            <p class="email">{{ person.email }}</p>
+                        {% endif %}
+                        <div class="bio">{{ person.content }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<section id="section5" data-section="updates">
+    <h2>Updates</h2>
+    <div class="updates-list">
+        {% for post in site.posts limit:5 %}
+            <div class="update-item">
+                <h3>{{ post.title }}</h3>
+                <div class="post-meta">
+                    <span class="date">{{ post.date | date: "%B %d, %Y" }}</span>
+                    {% if post.author %}
+                        <span class="author">by {{ post.author }}</span>
+                    {% endif %}
+                </div>
+                <div class="excerpt">
+                    {{ post.excerpt | strip_html | truncatewords: 50 }}
+                </div>
+                <a href="{{ post.url }}" class="read-more">Read More →</a>
+            </div>
+        {% endfor %}
+    </div>
+    
+    {% if site.posts.size > 5 %}
+        <div class="show-more-container">
+            <a href="/blog" class="show-more-button">View All Updates</a>
+        </div>
+    {% endif %}
+</section>
+
+<footer>
+    <p>Taurus is supported by grants: BLAH AND BLAH AND BLAH</p>
+</footer>
+
+<script src="/assets/scripts/coode.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
