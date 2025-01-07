@@ -68,22 +68,17 @@ document.addEventListener('click', (e) => {
     }
 });
 
-function togglePersonDetails(button) {
-    const personItem = button.closest('.person-item');
-    const isExpanding = !personItem.classList.contains('expanded');
+function togglePersonDetails(element) {
+    // If clicked element is a button (existing functionality)
+    if (element.classList.contains('expand-button') || element.classList.contains('close-button')) {
+        const personItem = element.closest('.person-item');
+        personItem.classList.toggle('expanded');
+        return;
+    }
     
-    // First collapse any currently expanded items
-    document.querySelectorAll('.person-item.expanded').forEach(item => {
-        if (item !== personItem) {
-            item.classList.remove('expanded');
-        }
-    });
-    
-    // Toggle the clicked item
-    personItem.classList.toggle('expanded');
-    
-    // Scroll into view if expanding
-    if (isExpanding) {
-        personItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // If clicked element is the preview div (new functionality)
+    if (element.classList.contains('person-preview')) {
+        const personItem = element.closest('.person-item');
+        personItem.classList.toggle('expanded');
     }
 }

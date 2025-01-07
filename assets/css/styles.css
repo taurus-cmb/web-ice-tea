@@ -161,6 +161,14 @@ section {
         color: #333;
         /* Changes the text color */
     }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 20pt auto;
+        display: block;
+        border-radius: 8pt;
+    }
 }
 
 footer {
@@ -193,9 +201,9 @@ footer {
 }
 
 .splash-image {
-    width: 80%;
-    height: auto;
-    max-height: 90vh;
+    width: 100%;
+    /* height: 100%; */
+    /* max-height: 90vh; */
     object-fit: contain;
 }
 
@@ -208,7 +216,7 @@ footer {
     text-align: center;
     /* background-color: rgba(0, 0, 0, 0.5); */
     /* Adjust this value as needed */
-    color: #000000;
+    color: #dfdfdf;
 }
 
 .splash-title {
@@ -227,7 +235,7 @@ footer {
     left: 50%;
     transform: translateX(-50%);
     font-size: 2em;
-    color: #000000;
+    color: #dfdfdf;
     text-decoration: none;
     animation: bounce 2s infinite;
     cursor: pointer;
@@ -254,31 +262,56 @@ footer {
 
 .people-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(150pt, 1fr));
+    gap: 20pt;
+    padding: 20pt;
     position: relative;
+
+    /* Increase mobile breakpoint to 900px */
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(auto-fill, minmax(80pt, 1fr));
+        gap: 10pt;
+        padding: 10pt;
+    }
 }
 
 .person-item {
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8pt;
+    box-shadow: 0 2pt 5pt rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     position: relative;
 }
 
 .person-preview {
-    padding: 15px;
+    padding: 15pt;
     text-align: center;
+    cursor: pointer;
+
+    /* Adjust breakpoint to match */
+    @media (max-width: 900px) {
+        padding: 5pt;
+
+        h3, .expand-button {
+            display: none;
+        }
+    }
 }
 
 .person-photo {
-    width: 120px;
-    height: 120px;
+    width: 100pt;
+    height: 100pt;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 10px;
+    margin-top: 10px;
+
+    /* Adjust breakpoint to match */
+    @media (max-width: 900px) {
+        width: 70pt;
+        height: 70pt;
+        margin: 0;
+    }
 }
 
 .person-photo-large {
@@ -304,20 +337,6 @@ footer {
 
 .person-info {
     text-align: left;
-}
-
-.expand-button {
-    background: #4a90e2;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.expand-button:hover {
-    background: #357abd;
 }
 
 /* Expanded state */
@@ -357,15 +376,16 @@ footer {
 /* Responsive adjustments */
 @media (max-width: 600px) {
     .person-item.expanded .person-details {
-        width: 100%;
+        width: calc(100vw - 80pt);  /* Full viewport width minus padding */
         transform: none;
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        max-height: 90vh;
+        max-height: calc(100vh - 40px);  /* Full viewport height minus padding */
         overflow-y: auto;
         grid-template-columns: 1fr;
+        margin: 20px;  /* Add some space from the edges */
     }
     
     .person-photo-large {
@@ -504,4 +524,38 @@ footer {
 
 .post-navigation a:hover {
     color: #357abd;
+}
+
+.publications-list ul {
+    margin: 0;
+    padding-left: 0;  /* Remove default padding */
+    list-style-type: none;  /* Remove default bullets */
+}
+
+.publication-item {
+    margin-bottom: 1.5em;
+    position: relative;
+    padding-left: 1.5em;  /* Make space for custom bullet */
+}
+
+.publication-item:before {
+    content: "•";  /* Custom bullet point */
+    position: absolute;
+    left: 0.5em;
+    color: #333;
+}
+
+.arxiv-link {
+    display: inline-block;
+    margin-left: 0.5em;
+    padding: 2px 8px;
+    background-color: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.arxiv-link:hover {
+    background-color: #357abd;
 }
