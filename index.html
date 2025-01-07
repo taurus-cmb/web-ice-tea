@@ -4,7 +4,7 @@ layout: default
 
 <nav>
     <a href="/" class="navbar-logo">
-        <img src="/assets/images/taurus_bull_border.png" alt="Logo">
+        <img src="assets/images/taurus_bull_border.png" alt="Logo">
     </a>
     <div class="hamburger" onclick="toggleMenu()">
         <span></span>
@@ -22,7 +22,7 @@ layout: default
 </nav>
 
 <div class="splash-container">
-    <img src="/assets/images/Taurus_collab.jpg" alt="Splash Image" class="splash-image">
+    <img src="assets/images/Taurus_collab.jpg" alt="Splash Image" class="splash-image">
     <div class="splash-overlay">
         <h1 class="splash-title">Taurus</h1>
         <h2 class="splash-subtitle">A balloon-born Cosmic microwave background telescope for measuring tau</h2>
@@ -84,19 +84,19 @@ layout: default
 
 <section id="section4" data-section="people">
     <h2>Collaborators</h2>
-    <img src="/assets/images/Taurus_collab.jpg" alt="Taurus Collaboration Group Photo" class="group-photo">
+    <img src="assets/images/Taurus_collab.jpg" alt="Taurus Collaboration Group Photo" class="group-photo">
     <div class="people-list">
         {% for person in site.people %}
         <div class="person-item collapsed">
             <div class="person-preview" onclick="togglePersonDetails(this)">
                 {% if person.picture %}
-                <img src="/assets/images/people/{{ person.picture }}" alt="{{ person.name }}" class="person-photo">
+                <img src="assets/images/people/{{ person.picture }}" alt="{{ person.name }}" class="person-photo">
                 {% endif %}
                 <h3>{{ person.name }}</h3>
             </div>
             <div class="person-details">
                 <button class="close-button" onclick="togglePersonDetails(this)">&times;</button>
-                <img src="/assets/images/people/{{ person.picture }}" alt="{{ person.name }}"
+                <img src="assets/images/people/{{ person.picture }}" alt="{{ person.name }}"
                     class="person-photo-large">
                 <div class="person-info">
                     <h3>{{ person.name }}</h3>
@@ -145,4 +145,4 @@ layout: default
     <p>Taurus is supported by grants: BLAH AND BLAH AND BLAH</p>
 </footer>
 
-<script src="/assets/scripts/coode.js"></script>
+<script src="assets/scripts/coode.js"></script>
