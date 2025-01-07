@@ -1,6 +1,6 @@
 ---
 name: Jeffrey P. Filippini
 institution: Illinois Physics
-picture: filippini.jpeg
+picture: filippini.jpg
 role: CoI
 ---

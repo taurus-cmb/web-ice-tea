@@ -1,5 +1,5 @@
 ---
 name: Ivan Padilla
 institution: CWRU Physics
-picture: padilla.jpeg
+picture: padilla.jpg
 ---

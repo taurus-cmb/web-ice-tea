@@ -1,6 +1,6 @@
 ---
 name: Steven J. Benton
 institution: Princeton University
-picture: sjb.jpeg
+picture: sjb.jpg
 role: PI
 ---

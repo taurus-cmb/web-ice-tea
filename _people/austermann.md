@@ -1,7 +1,7 @@
 ---
 name: Jason E. Austermann
 institution: NIST
-picture: austermann.png
+picture: austermann.jpg
 # email:
 # role: Graduate Student
 ---

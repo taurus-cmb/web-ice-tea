@@ -1,5 +1,5 @@
 ---
 name: Michael R. Vissers
 institution: NIST
-picture: vissers.png
+picture: vissers.jpg
 ---
