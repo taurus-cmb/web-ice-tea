@@ -22,11 +22,13 @@ layout: default
 </nav>
 
 <div class="splash-container">
-    <img src="assets/images/Taurus_collab.jpg" alt="Splash Image" class="splash-image">
+    <img src="assets/images/banner_sjb.png" alt="Splash Image" class="splash-image">
     <div class="splash-overlay">
         <h1 class="splash-title">Taurus</h1>
         <h2 class="splash-subtitle">A balloon-born Cosmic microwave background telescope for measuring tau</h2>
-        <a onclick="do_nav(document.querySelector('[data-link=\'science\']'))" class="scroll-down-arrow">╲╱</a>
+        <div class="scroll-down-arrow-container">
+            <a onclick="do_nav(document.querySelector('[data-link=\'science\']'))" class="scroll-down-arrow">╲╱</a>
+        </div>
     </div>
 </div>
 
@@ -96,8 +98,7 @@ layout: default
             </div>
             <div class="person-details">
                 <button class="close-button" onclick="togglePersonDetails(this)">&times;</button>
-                <img src="assets/images/people/{{ person.picture }}" alt="{{ person.name }}"
-                    class="person-photo-large">
+                <img src="assets/images/people/{{ person.picture }}" alt="{{ person.name }}" class="person-photo-large">
                 <div class="person-info">
                     <h3>{{ person.name }}</h3>
                     <p class="role">{{ person.role }}</p>
